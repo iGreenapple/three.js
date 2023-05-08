@@ -24,6 +24,10 @@ class OrbitControls extends EventDispatcher {
 	constructor( object, domElement ) {
 
 		super();
+		
+		/// custom code ///
+    		this.movement = null;
+    		///////////////////
 
 		this.object = object;
 		this.domElement = domElement;
@@ -547,6 +551,10 @@ class OrbitControls extends EventDispatcher {
 			rotateStart.copy( rotateEnd );
 
 			scope.update();
+			
+			// custom code //
+		      	scope.movement = "Rotate";
+		      	/////////////////
 
 		}
 
@@ -559,10 +567,18 @@ class OrbitControls extends EventDispatcher {
 			if ( dollyDelta.y > 0 ) {
 
 				dollyOut( getZoomScale() );
+				
+				// custom code //
+        			scope.movement = "Dolly out";
+        			/////////////////
 
 			} else if ( dollyDelta.y < 0 ) {
 
 				dollyIn( getZoomScale() );
+				
+				// custom code //
+				scope.movement = "Dolly In";
+        			/////////////////
 
 			}
 
@@ -583,6 +599,10 @@ class OrbitControls extends EventDispatcher {
 			panStart.copy( panEnd );
 
 			scope.update();
+			
+			// custom code //
+		      	scope.movement = "Pan";
+		      	/////////////////
 
 		}
 
@@ -591,10 +611,18 @@ class OrbitControls extends EventDispatcher {
 			if ( event.deltaY < 0 ) {
 
 				dollyIn( getZoomScale() );
+				
+				// custom code //
+        			scope.movement = "Zoom in";
+        			/////////////////
 
 			} else if ( event.deltaY > 0 ) {
 
 				dollyOut( getZoomScale() );
+				
+				// custom code //
+        			scope.movement = "Zoom out";
+        			/////////////////
 
 			}
 
